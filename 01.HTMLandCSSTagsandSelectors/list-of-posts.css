@@ -1,0 +1,15 @@
+.posts time {
+    font-style: italic;
+}
+
+.author {
+    font-weight: bold;
+}
+
+.posts header p {
+    color: brown;
+}
+
+.posts article > p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

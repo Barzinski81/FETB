@@ -1,0 +1,9 @@
+.todo-list {
+
+    color: brown;
+}
+
+.done {
+    color: blue;
+    text-decoration: line-through;
+}

@@ -1,0 +1,11 @@
+body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+}
+
+
+.header h1,
+.comments h2,
+.comment h2 {
+    color: #333;
+}
