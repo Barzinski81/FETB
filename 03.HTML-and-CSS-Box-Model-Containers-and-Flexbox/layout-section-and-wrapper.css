@@ -1,0 +1,15 @@
+article {
+    border: 2px solid black;
+    margin: 20px;
+}
+p {
+    font-weight: bold;
+    text-align: left;
+    padding: 20px;
+    border: 2px solid blue;
+    margin:20px 80px;
+}
+
+div {
+    border: 3px solid brown;
+}

@@ -1,0 +1,19 @@
+div {
+    border: 2px solid blue;
+    margin: 20px 120px;
+}
+
+body {
+    border: 2px solid green;
+    padding: 15px;
+   
+}
+
+header, main, footer {
+    border: 2px solid black;
+    padding: 20px;
+    text-align: center;
+    margin: 30px;
+    font-weight: bold;
+}
+
