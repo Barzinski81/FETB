@@ -1,0 +1,51 @@
+html {
+    box-sizing: border-box;
+}
+
+.viewport {
+    height: 25em;
+    width: auto;
+    position: relative;
+}
+
+.viewport:nth-child(1) {
+    background-image: linear-gradient(to right, #185a9d, #0085ca, #00adc8, #00d091, #3cea24);
+}
+
+.viewport:nth-child(2) {
+    background-image: linear-gradient(to right, #A83279, #C53764, #D6494C, #DB6532, #D38312);
+}
+
+.card {
+    background: cornflowerblue;
+    position: absolute;
+    display: block;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.viewport .card {
+    width: 15em;
+    aspect-ratio: 16 / 9;
+}
+
+.viewport:nth-child(2) .card {
+    aspect-ratio: 2 / 3;
+}
+
+.viewport .card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card img {
+    display: block;
+}

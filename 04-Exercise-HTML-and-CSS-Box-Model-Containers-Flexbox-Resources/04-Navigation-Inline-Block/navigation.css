@@ -1,0 +1,41 @@
+header {
+    border-bottom: 2px solid black;
+    font-family: Helvetica, sans-serif;
+    margin-left: 50px;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: 100px;
+    float:left;
+}
+
+nav {
+    display: inline-block;
+}
+
+li {
+    display: inline-block;
+    padding: 10px;
+}
+
+a {
+    color: green;
+    text-decoration: none;
+}
+
+ul {
+    margin-top: 20px;
+    margin-left: 150px;
+    font-size: 12px;
+}
+
+main {
+   margin-left: 50px;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+
