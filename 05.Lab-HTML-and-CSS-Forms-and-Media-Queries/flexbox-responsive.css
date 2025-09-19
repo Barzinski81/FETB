@@ -1,0 +1,101 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #eee;
+    min-height: 250px;
+}
+
+form {
+    background-color: white;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    gap: 10px;
+    width: 900px;
+    padding: 16px;
+    border-radius: 3px;
+}
+
+
+form input[type="text"],
+form input[type="email"] {
+    flex: 1 1 0;
+    /* grow and shrink */
+    padding: 12px;
+    min-width: 0;
+    /* prevents overflow */
+    background-color: #eee;
+    border: none;
+    border-radius: 3px;
+}
+
+form input[type="submit"] {
+
+    background: darkorange;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 3px;
+}
+
+form div input[type="text"] {
+    max-width: 30%;
+}
+
+form div input[type="email"] {
+    max-width: 65%;
+}
+
+form input[type="submit"] {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.fields {
+    display: flex;
+    flex: 1 1 0;
+    /* allow shrinking */
+    gap: 10px;
+    min-width: 0;
+    /* allows inputs to shrink properly */
+}
+
+@media screen and (max-width: 900px) {
+    form {
+        flex-direction: column;
+        /* stack fields and button vertically */
+    }
+
+    .fields {
+        flex-direction: row;
+        /* keep text & email side by side */
+    }
+
+    form {
+        width: 450px;
+
+    }
+}
+
+/* Second breakpoint: stack everything in a column */
+@media screen and (max-width: 640px) {
+    .fields {
+        flex-direction: column;
+        /* name & email stack vertically */
+
+    }
+
+    form {
+        width: 250px;
+
+    }
+
+    form div input[type="text"],
+    form div input[type="email"] {
+        max-width: 100%;
+    }
+
+
+}

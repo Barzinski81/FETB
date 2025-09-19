@@ -1,0 +1,72 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css);
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightslategray;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.8);
+}
+
+legend {
+    border-bottom: 2px solid lightgray;
+    padding-bottom: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+label {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+fieldset {
+    border: none;
+}
+
+p {
+    display: flex;
+    flex-direction: column; 
+}
+
+i {
+    color: red;
+    font-size: 6px;
+    vertical-align: 90%;
+}
+
+input[type="submit"] {
+    display: block;
+    margin: 25px auto 0 auto;
+    padding: 15px 100px;
+    border: none;
+    border-radius: 3px;
+    background: darkorange;
+    color: #fff;
+    width: 320px;
+    font-size: 16px;
+}
+
+input[type="email"] {
+    padding: 15px 10px;
+    border: 2px solid darkgray;
+    border-radius: 3px;
+}
+
+input[type="password"] {
+    padding: 15px 10px;
+    border: 2px solid darkgray;
+    border-radius: 3px;
+}
+
