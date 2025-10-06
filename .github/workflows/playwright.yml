@@ -8,11 +8,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # 👈 fixed Ubuntu version for Playwright
 
     defaults:
       run:
-        working-directory: 12-Playwright-Introduction-Lab-Resources  # 👈 your subfolder
+        working-directory: 12-Playwright-Introduction-Lab-Resources  # your subfolder
 
     steps:
       - name: Checkout repository
