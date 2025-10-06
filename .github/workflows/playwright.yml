@@ -1,4 +1,4 @@
-name: Playwright Tests (Subfolder)
+name: Playwright Tests (Docker)
 
 on:
   push:
@@ -8,7 +8,10 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-22.04  # 👈 fixed Ubuntu version for Playwright
+    # Use Playwright Docker image with Node, browsers, and dependencies
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.44.1-focal
 
     defaults:
       run:
@@ -18,16 +21,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
+      - name: Install Node dependencies
         run: npm ci || npm install
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
 
       - name: Start local HTTP server
         run: npm start &
