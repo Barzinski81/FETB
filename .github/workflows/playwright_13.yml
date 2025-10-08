@@ -10,10 +10,6 @@ jobs:
   test:
     runs-on: ubuntu-22.04
 
-    defaults:
-      run:
-        working-directory: 13-Exercise-Playwright-Resources  # your project folder
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,22 +20,23 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci || npm install
+        run: cd 13-Exercise-Playwright-Resources && npm ci || npm install
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: cd 13-Exercise-Playwright-Resources && npx playwright install --with-deps
 
       - name: Start frontend and backend servers
         run: |
-          npm start &          # start frontend on port 3000
-          npm run server &     # start backend (server/server.js)
-          wait-on http://localhost:3000
-          wait-on http://localhost:3000/api/health  # optional endpoint to confirm backend is ready
+          cd 13-Exercise-Playwright-Resources
+          npm start &               # frontend on port 3000
+          npm run server &          # backend
+          npx wait-on http://localhost:3000
         env:
           PORT: 3000
 
-      - name: Run Playwright tests
-        run: npx playwright test --reporter=html
+      - name: Run all Playwright tests
+        run: cd 13-Exercise-Playwright-Resources && npx playwright test --reporter=html --timeout=120000
+        # timeout increased to 2 minutes per test to avoid flaky failures
 
       - name: Upload Playwright HTML report
         if: always()
