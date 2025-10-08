@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: 13-Exercise-Playwright-Resources  # <-- your project folder
+        working-directory: 13-Exercise-Playwright-Resources  # your project folder
 
     steps:
       - name: Checkout repository
@@ -29,13 +29,14 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Start local HTTP server
-        run: npm start &
+      - name: Start frontend and backend servers
+        run: |
+          npm start &          # start frontend on port 3000
+          npm run server &     # start backend (server/server.js)
+          wait-on http://localhost:3000
+          wait-on http://localhost:3000/api/health  # optional endpoint to confirm backend is ready
         env:
           PORT: 3000
-
-      - name: Wait for server to be ready
-        run: npx wait-on http://localhost:3000
 
       - name: Run Playwright tests
         run: npx playwright test --reporter=html
