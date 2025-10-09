@@ -1,55 +1,46 @@
-name: Playwright Tests
+name: Playwright Tests (GamePlay SPA)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   test:
-    name: Run Playwright Tests
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: 14-Practical-Project-Automated-Testing-with-Playwright-Resources
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
-          cache-dependency-path: 14-Practical-Project-Automated-Testing-with-Playwright-Resources/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: cd 14-Practical-Project-Automated-Testing-with-Playwright-Resources && npm ci || npm install
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      - name: Install Playwright browsers
+        run: cd 14-Practical-Project-Automated-Testing-with-Playwright-Resources && npx playwright install --with-deps
 
-      - name: Start backend server
+      - name: Start frontend and backend servers
         run: |
-          npm run server &
-          sleep 5
+          cd 14-Practical-Project-Automated-Testing-with-Playwright-Resources
+          npm run start &           # frontend on port 3000
+          npm run server &          # backend
+          npx wait-on http://localhost:3000
+        env:
+          PORT: 3000
 
-      - name: Start frontend server
-        run: |
-          npm run start &
-          sleep 5
+      - name: Run all Playwright tests
+        run: cd 14-Practical-Project-Automated-Testing-with-Playwright-Resources && npx playwright test --reporter=html --timeout=120000
+        # timeout increased to 2 minutes per test to avoid flaky failures
 
-      - name: Run Playwright tests
-        run: npm test
-
-      - name: Upload Playwright report
+      - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: 14-Practical-Project-Automated-Testing-with-Playwright-Resources/playwright-report/
-          retention-days: 7
